@@ -1,4 +1,4 @@
-let inputProductNameText = document.querySelector('input.productModalQuery').value.split(' ')
+let inputProductNameText = document.querySelector('input.productModalQuery').value.toUpperCase().split(' ')
 let productsListHtml = document.querySelectorAll('td.issue-info')
 
 
@@ -11,7 +11,7 @@ function parsingAllTdInfo () {
 function styledTdInfo (tdHtmlElement) {
     let count = 0
     let productNameHtml = tdHtmlElement.querySelector('small')
-    let productNameText = productNameHtml.textContent.split(' ')
+    let productNameText = productNameHtml.textContent.toUpperCase().split(' ')
     let commonWords = ""
 
     for (let word of productNameText) {
