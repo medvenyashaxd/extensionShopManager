@@ -3,26 +3,24 @@ console.log(inputProductNameText)
 let productsListHtml = document.querySelectorAll('td.issue-info')
 
 
-function parsingAllTdInfo () {
+function parsingAllTdInfo() {
     for (let htmlData of productsListHtml) {
         styledTdInfo(htmlData)
     }
 }
 
-function styledTdInfo (tdHtmlElement) {
+function styledTdInfo(tdHtmlElement) {
     let productNameHtml = tdHtmlElement.querySelector('small')
 
-    let productNameText = productNameHtml.textContent.replace(/"/g, "", ).replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    let productNameText = productNameHtml.textContent.replace(/"/g, "",).replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
     console.log(productNameText)
 
     let commonWords = ""
-
     for (let word of productNameText) {
         if (inputProductNameText.includes(word)) {
-           commonWords += `<span style="background-color: yellow; color: #222; font-weight: bold;">${word}</span> `
-        }
-        else {
-            commonWords += `${word} `
+            commonWords += `<span style="background-color: yellow; color: #222; font-weight: bold;">${word}</span> `
+        } else {
+            commonWords += `<span style="color: red; font-weight: bold;">${word}</span> `
         }
     }
     productNameHtml.getElementsByTagName("a")[0].innerHTML = commonWords
