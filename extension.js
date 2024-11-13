@@ -1,4 +1,5 @@
-let inputProductNameText = document.querySelector('input.productModalQuery').value.toUpperCase().split(' ')
+let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").trim().toUpperCase().split(' ')
+console.log(inputProductNameText)
 let productsListHtml = document.querySelectorAll('td.issue-info')
 
 
@@ -10,7 +11,10 @@ function parsingAllTdInfo () {
 
 function styledTdInfo (tdHtmlElement) {
     let productNameHtml = tdHtmlElement.querySelector('small')
-    let productNameText = productNameHtml.textContent.toUpperCase().split(' ')
+
+    let productNameText = productNameHtml.textContent.replace(/"/g, "", ).trim().toUpperCase().split(' ')
+    console.log(productNameText)
+
     let commonWords = ""
 
     for (let word of productNameText) {
@@ -21,8 +25,9 @@ function styledTdInfo (tdHtmlElement) {
             commonWords += `${word} `
         }
     }
-
     productNameHtml.getElementsByTagName("a")[0].innerHTML = commonWords
+
+    console.log(commonWords)
 }
 
 parsingAllTdInfo()
