@@ -12,7 +12,7 @@ function parsingAllTdInfo() {
 function styledTdInfo(tdHtmlElement) {
     let productNameHtml = tdHtmlElement.querySelector('small')
 
-    let productNameText = productNameHtml.textContent.replace(/"/g, "",).replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    let productNameText = productNameHtml.textContent.replace(/"/g, "").replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
     console.log(productNameText)
 
     let commonWords = ""
