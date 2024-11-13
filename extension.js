@@ -9,7 +9,6 @@ function parsingAllTdInfo () {
 }
 
 function styledTdInfo (tdHtmlElement) {
-    let count = 0
     let productNameHtml = tdHtmlElement.querySelector('small')
     let productNameText = productNameHtml.textContent.toUpperCase().split(' ')
     let commonWords = ""
@@ -23,8 +22,7 @@ function styledTdInfo (tdHtmlElement) {
         }
     }
 
-    productNameHtml.getElementsByTagName("a")[count].innerHTML = commonWords
-    count++
+    productNameHtml.getElementsByTagName("a")[0].innerHTML = commonWords
 }
 
 parsingAllTdInfo()
