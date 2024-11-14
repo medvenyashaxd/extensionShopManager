@@ -1,15 +1,18 @@
-let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
-console.log(inputProductNameText)
-let productsListHtml = document.querySelectorAll('td.issue-info')
+document.querySelector(".add-link-btn").addEventListener("click", parsingAllTdInfo)
 
 
 function parsingAllTdInfo() {
+    let productsListHtml = document.querySelectorAll('td.issue-info')
+
     for (let htmlData of productsListHtml) {
         styledTdInfo(htmlData)
     }
 }
 
 function styledTdInfo(tdHtmlElement) {
+    let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    console.log(inputProductNameText)
+
     let productNameHtml = tdHtmlElement.querySelector('small')
 
     let productNameText = productNameHtml.textContent.replace(/"/g, "").replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
@@ -27,5 +30,3 @@ function styledTdInfo(tdHtmlElement) {
 
     console.log(commonWords)
 }
-
-parsingAllTdInfo()
