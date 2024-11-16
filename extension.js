@@ -1,9 +1,17 @@
-document.querySelector(".add-link-btn").addEventListener("click", parsingAllTdInfo)
+let productModalResults = document.querySelector(".productModalResults")
 
+let observer = new MutationObserver(getMutationRecord)
 
-function parsingAllTdInfo() {
-    let productsListHtml = document.querySelectorAll('td.issue-info')
+function getMutationRecord(records) {
+    for (let record of records) {
+        let nodes = record.addedNodes
+        if (nodes.length) {
+            parsingAllTdInfo(nodes[0].querySelectorAll('td.issue-info'))
+        }
+    }
+}
 
+function parsingAllTdInfo(productsListHtml) {
     for (let htmlData of productsListHtml) {
         styledTdInfo(htmlData)
     }
@@ -30,3 +38,9 @@ function styledTdInfo(tdHtmlElement) {
 
     console.log(commonWords)
 }
+
+observer.observe(
+    productModalResults,
+    {
+        childList: true,
+    })
