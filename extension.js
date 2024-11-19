@@ -31,7 +31,7 @@ function styledTdInfo(tdHtmlElement) {
         if (inputProductNameText.includes(word)) {
             commonWords += `<span style="background-color: yellow; color: #222; font-weight: bold;">${word}</span> `
         } else {
-            commonWords += `<span style="color: red; font-weight: bold;">${word}</span> `
+            commonWords += `<span>${word}</span> `
         }
     }
     productNameHtml.getElementsByTagName("a")[0].innerHTML = commonWords
