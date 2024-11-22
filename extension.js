@@ -18,12 +18,12 @@ function parsingAllTdInfo(productsListHtml) {
 }
 
 function styledTdInfo(tdHtmlElement) {
-    let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
     console.log(inputProductNameText)
 
     let productNameHtml = tdHtmlElement.querySelector('small')
 
-    let productNameText = productNameHtml.textContent.replace(/"/g, "").replace(/-/g, " ").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    let productNameText = productNameHtml.textContent.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
     console.log(productNameText)
 
     let commonWords = ""
