@@ -23,7 +23,7 @@ observer.observe(
 function getText(element) {
     let brand = element.querySelector(".brandAndName")
     let smallBrandContent = brand.querySelector("small").outerText
-    let brandText = brand.innerText
+    let brandText = brand.innerText.split("\n")[1]
     brand.innerHTML = smallBrandContent + "<br><span></span>"
 
     let linked_name = element.querySelector(".btn.btn-xs.btn-outline.btn-primary").text
