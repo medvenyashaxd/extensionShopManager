@@ -20,16 +20,20 @@ observer.observe(
     }
 )
 
+function removeBlackCharacters(str) {
+    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim()
+}
 
 function getText(elem) {
-    let brandText = elem.querySelector(".brandAndName").innerText.split("\n")[1].split(" ")
-    let linkedText = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text.split(" ")
+    let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText)
+    let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text)
+    brandText = brandText.split("\n")[1].split(" ")
+    linkedText = linkedText.split(" ")
     return {
         brandText: brandText,
         linkedText: linkedText,
     }
 }
-
 
 function parsingWords(elem) {
     let words = getText(elem)
@@ -37,7 +41,6 @@ function parsingWords(elem) {
     let linkedText = getCommonWords(words.linkedText, words.brandText)
     insertTextInElement(elem, brandText, linkedText)
 }
-
 
 function getCommonWords(words1, words2) {
     let commonWords = ""
@@ -65,5 +68,5 @@ function insertTextInElement(elem, brandText, linkedText) {
     brandElem.innerHTML = smallBrandContent + "<br>" + brandText
 
     let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary")
-    linkedElem.innerHTML = '<i class="fa fa-external-link"></i>' + linkedText
+    linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText
 }
