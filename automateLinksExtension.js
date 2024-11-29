@@ -53,7 +53,7 @@ function getCommonWords(words1, words2) {
 
 function insertStyle(common, word) {
     if (common) {
-        return `<span style="background-color: yellow; color: #222; font-weight: bold;">${word}</span> `
+        return `<span style="background-color: yellow; color: #222</span> `
     } else {
         return `<span>${word}</span> `
     }
