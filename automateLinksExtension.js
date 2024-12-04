@@ -27,7 +27,11 @@ function removeBlackCharacters(str) {
 function getText(elem) {
     let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText)
     let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text)
-    brandText = brandText.split("\n")[1].split(" ")
+    if (brandText.includes("\n")) {
+        brandText = brandText.split("\n")[1].split(" ")
+    } else {
+        brandText = brandText.split(" ")
+    }
     linkedText = linkedText.split(" ")
     return {
         brandText: brandText,
@@ -65,7 +69,7 @@ function insertStyle(common, word) {
 function insertTextInElement(elem, brandText, linkedText) {
     let brandElem = elem.querySelector(".brandAndName")
     let smallBrandContent = brandElem.querySelector("small").outerText
-    brandElem.innerHTML = smallBrandContent + "<br>" + brandText
+    brandElem.innerHTML = `<small>${smallBrandContent}</small><br>${brandText}`
 
     let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary")
     linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText
