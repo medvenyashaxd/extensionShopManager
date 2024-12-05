@@ -68,8 +68,7 @@ function insertStyle(common, word) {
 
 function insertTextInElement(elem, brandText, linkedText) {
     let brandElem = elem.querySelector(".brandAndName")
-    let smallBrandContent = brandElem.querySelector("small").outerText
-    brandElem.innerHTML = `<small>${smallBrandContent}</small><br>${brandText}`
+    brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText
 
     let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary")
     linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText
