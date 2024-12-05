@@ -28,11 +28,8 @@ function getText(elem) {
     let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText)
     let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text)
     if (brandText.includes("\n")) {
-        brandText = brandText.split("\n")[1].split(" ")
-    } else {
-        brandText = brandText.split(" ")
+        brandText = brandText.split("\n")[1]
     }
-    linkedText = linkedText.split(" ")
     return {
         brandText: brandText,
         linkedText: linkedText,
@@ -41,15 +38,21 @@ function getText(elem) {
 
 function parsingWords(elem) {
     let words = getText(elem)
-    let brandText = getCommonWords(words.brandText, words.linkedText)
-    let linkedText = getCommonWords(words.linkedText, words.brandText)
+    let brandText = getCommonWords(words.brandText.split(" "), words.linkedText)
+    let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText)
     insertTextInElement(elem, brandText, linkedText)
+}
+
+function searchIncludesText(words1, words2){
+    words1 = words1.toLowerCase()
+    words2 = words2.toLowerCase()
+    return words1.includes(words2)
 }
 
 function getCommonWords(words1, words2) {
     let commonWords = ""
     for (let word of words1) {
-        if (words2.includes(word)) {
+        if (searchIncludesText(words2, word)) {
             commonWords += insertStyle(true, word)
         } else {
             commonWords += insertStyle(false, word)
