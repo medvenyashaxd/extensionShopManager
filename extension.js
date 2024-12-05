@@ -17,10 +17,10 @@ function parsingAllTdInfo(productsListHtml) {
     }
 }
 
-function searchIncludesText(txt1, txt2){
-    txt1 = txt1.toLowerCase().split(" ")
-    txt2 = txt2.toLowerCase()
-    return txt1.includes(txt2)
+function searchIncludesText(words, word){
+    words = words.toLowerCase().split(" ")
+    word = word.toLowerCase()
+    return words.includes(word)
 }
 
 function styledTdInfo(tdHtmlElement) {

@@ -43,10 +43,10 @@ function parsingWords(elem) {
     insertTextInElement(elem, brandText, linkedText)
 }
 
-function searchIncludesText(words1, words2){
-    words1 = words1.toLowerCase()
-    words2 = words2.toLowerCase()
-    return words1.includes(words2)
+function searchIncludesText(words, word){
+    words = words.toLowerCase().split(" ")
+    word = word.toLowerCase()
+    return words.includes(word)
 }
 
 function getCommonWords(words1, words2) {
