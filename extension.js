@@ -17,18 +17,24 @@ function parsingAllTdInfo(productsListHtml) {
     }
 }
 
+function searchIncludesText(txt1, txt2){
+    txt1 = txt1.toLowerCase().split(" ")
+    txt2 = txt2.toLowerCase()
+    return txt1.includes(txt2)
+}
+
 function styledTdInfo(tdHtmlElement) {
-    let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    let inputProductNameText = document.querySelector('input.productModalQuery').value.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim()
     console.log(inputProductNameText)
 
     let productNameHtml = tdHtmlElement.querySelector('small')
 
-    let productNameText = productNameHtml.textContent.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim().toUpperCase().split(' ')
+    let productNameText = productNameHtml.textContent.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim().split(' ')
     console.log(productNameText)
 
     let commonWords = ""
     for (let word of productNameText) {
-        if (inputProductNameText.includes(word)) {
+        if (searchIncludesText(inputProductNameText, word)) {
             commonWords += `<span style="background-color: yellow; color: #222; font-weight: bold;">${word}</span> `
         } else {
             commonWords += `<span>${word}</span> `
