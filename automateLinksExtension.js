@@ -11,7 +11,7 @@ let checkRows = (records) => {
     }
 }
 
-let observer = new MutationObserver(checkRows)
+let tableObserver = new MutationObserver(checkRows)
 observer.observe(
     table,
     {
