@@ -1,6 +1,6 @@
 let productModalResults = document.querySelector(".productModalResults")
 
-let observer = new MutationObserver(checkModalResults)
+let modalObserver = new MutationObserver(checkModalResults)
 
 function checkModalResults(records) {
     for (let record of records) {
