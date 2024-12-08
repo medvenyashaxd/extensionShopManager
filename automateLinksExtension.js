@@ -69,7 +69,7 @@ function insertStyle(common, word) {
     }
 }
 
-function insertTextInElement(elem, brandText, linkedText) {
+function insertRowTextInElement(elem, brandText, linkedText) {
     let brandElem = elem.querySelector(".brandAndName")
     brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText
 
