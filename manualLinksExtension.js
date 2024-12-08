@@ -54,7 +54,7 @@ function insertStyle(common, word, td) {
     }
 }
 
-observer.observe(
+modalObserver.observe(
     productModalResults,
     {
         childList: true,
