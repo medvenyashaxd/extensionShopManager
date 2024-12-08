@@ -40,7 +40,7 @@ function parsingRowWords(elem) {
     let words = getRowText(elem)
     let brandText = getCommonWords(words.brandText.split(" "), words.linkedText)
     let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText)
-    insertTextInElement(elem, brandText, linkedText)
+    insertRowTextInElement(elem, brandText, linkedText)
 }
 
 function searchIncludesText(words, word){
