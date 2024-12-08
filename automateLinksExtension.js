@@ -5,7 +5,7 @@ let checkRows = (records) => {
         if (record.addedNodes.length) {
             let element = document.getElementById(record.addedNodes[0].data)
             if (element) {
-                parsingWords(element)
+                parsingRowWords(element)
             }
         }
     }
@@ -36,7 +36,7 @@ function getRowText(elem) {
     }
 }
 
-function parsingWords(elem) {
+function parsingRowWords(elem) {
     let words = getRowText(elem)
     let brandText = getCommonWords(words.brandText.split(" "), words.linkedText)
     let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText)
