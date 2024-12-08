@@ -12,7 +12,7 @@ let checkRows = (records) => {
 }
 
 let tableObserver = new MutationObserver(checkRows)
-observer.observe(
+tableObserver.observe(
     table,
     {
         childList: true,
