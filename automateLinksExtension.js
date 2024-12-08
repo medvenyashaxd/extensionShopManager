@@ -24,7 +24,7 @@ function removeBlackCharacters(str) {
     return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim()
 }
 
-function getText(elem) {
+function getRowText(elem) {
     let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText)
     let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text)
     if (brandText.includes("\n")) {
@@ -37,7 +37,7 @@ function getText(elem) {
 }
 
 function parsingWords(elem) {
-    let words = getText(elem)
+    let words = getRowText(elem)
     let brandText = getCommonWords(words.brandText.split(" "), words.linkedText)
     let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText)
     insertTextInElement(elem, brandText, linkedText)
