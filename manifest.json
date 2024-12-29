@@ -1,0 +1,16 @@
+{
+    "name": "Shop Manager Extension",
+    "description": "Shop Manager Extension for links",
+    "version": "1.0",
+    "manifest_version": 3,
+    "icons": {},
+    "action": {
+      "default_popup" : "ui.html"
+    },
+    "permissions": [
+        "storage",
+        "scripting",
+        "activeTab"
+    ],
+    "background":{}
+}
