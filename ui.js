@@ -1,19 +1,36 @@
-let autoPlusManualLinksButton = document.getElementById("autoPlusManualLinks")
-autoPlusManualLinksButton.onchange = () => {
-    clickedStartScriptButton("autoPlusManualLinks", autoPlusManualLinksButton)
+let autoPlusManualLinksButton = document.getElementById("autoPlusManualLinks");
+autoPlusManualLinksButton.onclick = () => {
+    clickedStartScriptButton("autoPlusManualLinks", autoPlusManualLinksButton);
 };
 
-document.getElementById("manualLinks").onchange = function () {
-    console.log(this.checked, "manualLinks");
-};
-document.getElementById("autoLinks").onchange = function () {
-    console.log(this.checked, "autoLinks");
-};
-document.getElementById("checkJournalLinks").onchange = function () {
-    console.log(this.checked, "checkJournalLinks");
+let manualLinksButton = document.getElementById("manualLinks");
+manualLinksButton.onclick = () => {
+    clickedStartScriptButton("manualLinks", manualLinksButton);
 };
 
-function clickedStartScriptButton (script, elem) {
-    elem.innerText = "Активировано"
-    setTimeout(() => {elem.innerText = "Включить"}, 3000)
+let autoLinksButton = document.getElementById("autoLinks");
+autoLinksButton.onclick = () => {
+    clickedStartScriptButton("autoLinks", autoLinksButton);
+};
+
+let checkJournalLinksButton = document.getElementById("checkJournalLinks");
+checkJournalLinksButton.onclick = () => {
+    clickedStartScriptButton("JournalLinks", checkJournalLinksButton);
+};
+
+function runScript(script) {
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        chrome.scripting.executeScript(
+            {
+                target: {tabId: tabs[0].id},
+                files: [script + ".js"]
+            },
+        );
+    });
+}
+
+function clickedStartScriptButton(script, button) {
+    button.innerText = "Включено";
+    setTimeout(() => {button.innerText = "Включить"}, 2000);
+    runScript(script);
 }

@@ -23,11 +23,12 @@ body {
 }
 
 .btn-activate {
-    background-color: #1ab394;
-    border-color: #1ab394;
-    color: #FFFFFF;
+    background-color: transparent;
+    color: #1ab394;
+    border: 1px solid #1ab394;
     border-radius: 3px;
     padding: 1px 5px;
     font-size: 12px;
     line-height: 1.5;
+    cursor: pointer;
 }
