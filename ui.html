@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./main.css">
 </head>
@@ -11,38 +12,26 @@
         <p>
             Автоматическая + ручная привязка
         </p>
-        <label class="switch">
-            <input id="autoPlusManualLinks" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+        <button class="btn-activate" id="autoPlusManualLinks">Включить</button>
     </div>
     <div class="item-menu">
         <p>
             Ручная привязка
         </p>
-        <label class="switch">
-            <input id="manualLinks" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+        <button class="btn-activate" id="manualLinks">Включить</button>
     </div>
-        <div class="item-menu">
+    <div class="item-menu">
         <p>
             Автоматическая привязка
         </p>
-        <label class="switch">
-            <input id="autoLinks" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+        <button class="btn-activate" id="autoLinks">Включить</button>
     </div>
     <h2 class="text-menu">Журнал связей</h2>
     <div class="item-menu">
-    <p>
-        Проверка журнала связей
-    </p>
-    <label class="switch">
-        <input id="checkJournalLinks" type="checkbox">
-        <span class="slider round"></span>
-    </label>
+        <p>
+            Проверка журнала связей
+        </p>
+        <button class="btn-activate" id="checkJournalLinks">Включить</button>
     </div>
 </div>
 <script src="./ui.js"></script>

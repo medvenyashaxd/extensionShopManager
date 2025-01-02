@@ -1,6 +1,8 @@
-document.getElementById("autoPlusManualLinks").onchange = function () {
-    console.log(this.checked, "autoPlusManualLinks");
+let autoPlusManualLinksButton = document.getElementById("autoPlusManualLinks")
+autoPlusManualLinksButton.onchange = () => {
+    clickedStartScriptButton("autoPlusManualLinks", autoPlusManualLinksButton)
 };
+
 document.getElementById("manualLinks").onchange = function () {
     console.log(this.checked, "manualLinks");
 };
@@ -10,3 +12,8 @@ document.getElementById("autoLinks").onchange = function () {
 document.getElementById("checkJournalLinks").onchange = function () {
     console.log(this.checked, "checkJournalLinks");
 };
+
+function clickedStartScriptButton (script, elem) {
+    elem.innerText = "Активировано"
+    setTimeout(() => {elem.innerText = "Включить"}, 3000)
+}
