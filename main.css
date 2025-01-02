@@ -1,25 +1,25 @@
 body {
-  font-family: Verdana, Arial, sans-serif;
-  width: 320px;
+    font-family: Verdana, Arial, sans-serif;
+    width: 320px;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #DDDDDD;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #DDDDDD;
 }
 
 .text-menu {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .item-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #DDDDDD;
-  padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #DDDDDD;
+    padding: 5px;
 }
 
 .btn-activate {
@@ -31,4 +31,14 @@ body {
     font-size: 12px;
     line-height: 1.5;
     cursor: pointer;
+}
+
+.btn-activate:hover {
+    background-color: #18a689;
+    border-color: #18a689;
+    color: #FFFFFF;
+}
+
+.btn-activate {
+    transition: background-color 0.6s ease, border-color 0.6s ease, color 0.6s ease;
 }
