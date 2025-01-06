@@ -15,7 +15,7 @@ autoLinksButton.onclick = () => {
 
 let checkJournalLinksButton = document.getElementById("checkJournalLinks");
 checkJournalLinksButton.onclick = () => {
-    clickedStartScriptButton("JournalLinks", checkJournalLinksButton);
+    clickedStartScriptButton("journalLinks", checkJournalLinksButton);
 };
 
 function runScript(script) {
