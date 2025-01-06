@@ -1,10 +1,14 @@
 let table = document.querySelector("tbody")
 
 function checkLinks() {
-    let productNames = document.querySelectorAll('td[aria-describedby="links_table_productName"]');
-    let linkedProductNames = document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]');
-    parsingLinks(productNames, linkedProductNames);
-    parsingLinks(linkedProductNames, productNames);
+    parsingLinks(
+        document.querySelectorAll('td[aria-describedby="links_table_productName"]'),
+        document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]')
+    );
+    parsingLinks(
+        document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]'),
+        document.querySelectorAll('td[aria-describedby="links_table_productName"]'),
+    );
 }
 
 function parsingLinks(links1, links2) {
