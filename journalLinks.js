@@ -1,4 +1,4 @@
-let table = document.querySelector("tbody")
+let table = document.querySelector("tbody");
 
 function checkLinks() {
     parsingLinks(
