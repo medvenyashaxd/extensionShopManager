@@ -46,7 +46,7 @@ function insertStyle(common, word, td) {
 
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     if (htmlElem.getElementsByTagName("a")[0]) {
-        htmlElem.getElementsByTagName("a")[0].innerHTML = htmlElem.getElementsByTagName("a")[0].innerHTML + " " + commonWords;
+        htmlElem.innerHTML = htmlElem.getElementsByTagName("a")[0].innerHTML + " " + commonWords;
     } else {
         htmlElem.innerHTML = commonWords;
     }
