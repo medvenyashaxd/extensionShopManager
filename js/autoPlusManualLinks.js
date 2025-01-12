@@ -1,6 +1,7 @@
 import searchIncludesText from './main'
 import removeBlackCharacters from './main'
 import insertStyle from './main'
+import getCommonWords from './main'
 
 
 let productModalResults = document.querySelector(".productModalResults");
@@ -64,18 +65,6 @@ function insertRowTextInElement(elem, brandText, linkedText) {
 
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords;
-}
-
-function getCommonWords(words1, words2, td) {
-    let commonWords = "";
-    for (let word of words1) {
-        if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word, td);
-        } else {
-            commonWords += insertStyle(false, word, td);
-        }
-    }
-    return commonWords
 }
 
 let tableObserver = new MutationObserver(checkRows);

@@ -44,19 +44,6 @@ function parsingWords(elem) {
     insertTextInElement(elem, brandText, linkedText);
 }
 
-
-function getCommonWords(words1, words2) {
-    let commonWords = "";
-    for (let word of words1) {
-        if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word);
-        } else {
-            commonWords += insertStyle(false, word);
-        }
-    }
-    return commonWords
-}
-
 function insertTextInElement(elem, brandText, linkedText) {
     let brandElem = elem.querySelector(".brandAndName");
     brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText;

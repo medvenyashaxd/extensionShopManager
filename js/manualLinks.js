@@ -27,18 +27,6 @@ function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords;
 }
 
-function getCommonWords(words1, words2, td) {
-    let commonWords = "";
-    for (let word of words1) {
-        if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word, td);
-        } else {
-            commonWords += insertStyle(false, word, td);
-        }
-    }
-    return commonWords
-}
-
 modalObserver.observe(
     productModalResults,
     {

@@ -22,18 +22,6 @@ function parsingLinks(links1, links2) {
     }
 }
 
-function getCommonWords(words1, words2, td) {
-    let commonWords = "";
-    for (let word of words1) {
-        if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word, td);
-        } else {
-            commonWords += insertStyle(false, word, td);
-        }
-    }
-    return commonWords
-}
-
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     if (htmlElem.getElementsByTagName("a")[0]) {
         htmlElem.innerHTML = htmlElem.getElementsByTagName("a")[0].outerHTML + " " + commonWords;
