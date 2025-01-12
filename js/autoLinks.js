@@ -1,32 +1,32 @@
-let table = document.querySelector("tbody")
+let table = document.querySelector("tbody");
 
 let checkRows = (records) => {
     for (let record of records) {
         if (record.addedNodes.length) {
-            let element = document.getElementById(record.addedNodes[0].data)
+            let element = document.getElementById(record.addedNodes[0].data);
             if (element) {
-                parsingWords(element)
+                parsingWords(element);
             }
         }
     }
 }
 
-let observer = new MutationObserver(checkRows)
+let observer = new MutationObserver(checkRows);
 observer.observe(
     table,
     {
         childList: true,
         subtree: true
     }
-)
+);
 
 function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim()
+    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
 }
 
 function getText(elem) {
-    let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText)
-    let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text)
+    let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText);
+    let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text);
     if (brandText.includes("\n")) {
         brandText = brandText.split("\n")[1]
     }
@@ -37,25 +37,25 @@ function getText(elem) {
 }
 
 function parsingWords(elem) {
-    let words = getText(elem)
-    let brandText = getCommonWords(words.brandText.split(" "), words.linkedText)
-    let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText)
-    insertTextInElement(elem, brandText, linkedText)
+    let words = getText(elem);
+    let brandText = getCommonWords(words.brandText.split(" "), words.linkedText);
+    let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText);
+    insertTextInElement(elem, brandText, linkedText);
 }
 
 function searchIncludesText(words, word){
-    words = words.toLowerCase().split(" ")
-    word = word.toLowerCase()
+    words = words.toLowerCase().split(" ");
+    word = word.toLowerCase();
     return words.includes(word)
 }
 
 function getCommonWords(words1, words2) {
-    let commonWords = ""
+    let commonWords = "";
     for (let word of words1) {
         if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word)
+            commonWords += insertStyle(true, word);
         } else {
-            commonWords += insertStyle(false, word)
+            commonWords += insertStyle(false, word);
         }
     }
     return commonWords
@@ -63,16 +63,16 @@ function getCommonWords(words1, words2) {
 
 function insertStyle(common, word) {
     if (common) {
-        return `<span style="background-color: yellow; color: #222">${word}</span> `
+        return `<span style="background-color: yellow; color: #222">${word}</span> `;
     } else {
-        return `<span>${word}</span> `
+        return `<span>${word}</span> `;
     }
 }
 
 function insertTextInElement(elem, brandText, linkedText) {
-    let brandElem = elem.querySelector(".brandAndName")
-    brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText
+    let brandElem = elem.querySelector(".brandAndName");
+    brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText;
 
-    let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary")
-    linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText
+    let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary");
+    linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText;
 }
