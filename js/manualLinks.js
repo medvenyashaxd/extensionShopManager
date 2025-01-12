@@ -1,5 +1,6 @@
-let productModalResults = document.querySelector(".productModalResults");
+import searchIncludesText from './main'
 
+let productModalResults = document.querySelector(".productModalResults");
 let modalObserver = new MutationObserver(checkModalResults);
 
 function checkModalResults(records) {
@@ -22,12 +23,6 @@ function parsingAllTdInfo(productsListHtml) {
         let productNameText = removeBlackCharacters(smallElem.textContent);
         insertCommonWordsInTdInfo(smallElem, getCommonWords(productNameText.split(" "), inputProductNameText, true));
     }
-}
-
-function searchIncludesText(words, word) {
-    words = words.toLowerCase().split(" ");
-    word = word.toLowerCase();
-    return words.includes(word)
 }
 
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {

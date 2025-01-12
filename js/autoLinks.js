@@ -1,3 +1,6 @@
+import searchIncludesText from './main'
+
+
 let table = document.querySelector("tbody");
 
 let checkRows = (records) => {
@@ -43,11 +46,6 @@ function parsingWords(elem) {
     insertTextInElement(elem, brandText, linkedText);
 }
 
-function searchIncludesText(words, word){
-    words = words.toLowerCase().split(" ");
-    word = word.toLowerCase();
-    return words.includes(word)
-}
 
 function getCommonWords(words1, words2) {
     let commonWords = "";

@@ -1,3 +1,6 @@
+import searchIncludesText from './main'
+
+
 let productModalResults = document.querySelector(".productModalResults");
 let table = document.querySelector("tbody");
 
@@ -59,12 +62,6 @@ function insertRowTextInElement(elem, brandText, linkedText) {
 
     let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary");
     linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText;
-}
-
-function searchIncludesText(words, word) {
-    words = words.toLowerCase().split(" ");
-    word = word.toLowerCase();
-    return words.includes(word)
 }
 
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {

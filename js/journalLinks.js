@@ -1,3 +1,6 @@
+import searchIncludesText from './main'
+
+
 let table = document.querySelector("tbody");
 
 function checkLinks() {
@@ -28,12 +31,6 @@ function getCommonWords(words1, words2, td) {
         }
     }
     return commonWords
-}
-
-function searchIncludesText(words, word) {
-    words = words.toLowerCase().split(" ");
-    word = word.toLowerCase();
-    return words.includes(word)
 }
 
 function insertStyle(common, word, td) {
