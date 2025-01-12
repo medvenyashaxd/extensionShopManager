@@ -1,9 +1,3 @@
-import searchIncludesText from './main'
-import removeBlackCharacters from './main'
-import insertStyle from './main'
-import getCommonWords from './main'
-import table from './main'
-
 let checkRows = (records) => {
     for (let record of records) {
         if (record.addedNodes.length) {
@@ -44,7 +38,7 @@ function insertTextInElement(elem, brandText, linkedText) {
 
 let tableObserver = new MutationObserver(checkRows);
 tableObserver.observe(
-    table,
+    document.querySelector("tbody"),
     {
         childList: true,
         subtree: true

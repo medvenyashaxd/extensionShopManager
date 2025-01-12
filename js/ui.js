@@ -23,7 +23,7 @@ function runScript(script) {
         chrome.scripting.executeScript(
             {
                 target: {tabId: tabs[0].id},
-                files: ["./js/" + script + ".js"]
+                files: ["./js/main.js", "./js/" + script + ".js"]
             },
         );
     });

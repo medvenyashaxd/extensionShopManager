@@ -1,8 +1,3 @@
-import searchIncludesText from './main'
-import insertStyle from './main'
-import getCommonWords from './main'
-import table from './main'
-
 function checkLinks() {
     parsingLinks(
         document.querySelectorAll('td[aria-describedby="links_table_productName"]'),
@@ -34,7 +29,7 @@ checkLinks();
 
 let tableObserver = new MutationObserver(checkLinks);
 tableObserver.observe(
-    table,
+    document.querySelector("tbody"),
     {
         childList: true,
     }

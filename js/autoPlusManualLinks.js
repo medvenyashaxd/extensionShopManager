@@ -1,10 +1,3 @@
-import searchIncludesText from './main'
-import removeBlackCharacters from './main'
-import insertStyle from './main'
-import getCommonWords from './main'
-import productModalResults from './main'
-import table from './main'
-
 function checkModalResults(records) {
     for (let record of records) {
         let nodes = record.addedNodes;
@@ -67,7 +60,7 @@ function insertCommonWordsInTdInfo(htmlElem, commonWords) {
 
 let tableObserver = new MutationObserver(checkRows);
 tableObserver.observe(
-    table,
+    document.querySelector("tbody"),
     {
         childList: true,
         subtree: true
@@ -76,7 +69,7 @@ tableObserver.observe(
 
 let modalObserver = new MutationObserver(checkModalResults);
 modalObserver.observe(
-    productModalResults,
+    document.querySelector(".productModalResults"),
     {
         childList: true,
     }
