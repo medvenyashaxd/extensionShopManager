@@ -24,10 +24,6 @@ let checkRows = (records) => {
     }
 }
 
-function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
-}
-
 function parsingAllTdInfo(productsListHtml) {
     let inputProductNameText = removeBlackCharacters(document.querySelector('input.productModalQuery').value);
     for (let htmlElem of productsListHtml) {

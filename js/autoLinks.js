@@ -23,10 +23,6 @@ observer.observe(
     }
 );
 
-function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
-}
-
 function getText(elem) {
     let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText);
     let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text);
