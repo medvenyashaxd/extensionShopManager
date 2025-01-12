@@ -1,11 +1,11 @@
-let productModalResults = document.querySelector(".productModalResults")
-let table = document.querySelector("tbody")
+let productModalResults = document.querySelector(".productModalResults");
+let table = document.querySelector("tbody");
 
 function checkModalResults(records) {
     for (let record of records) {
-        let nodes = record.addedNodes
+        let nodes = record.addedNodes;
         if (nodes.length) {
-            parsingAllTdInfo(nodes[0].querySelectorAll('td.issue-info'))
+            parsingAllTdInfo(nodes[0].querySelectorAll('td.issue-info'));
         }
     }
 }
@@ -13,32 +13,32 @@ function checkModalResults(records) {
 let checkRows = (records) => {
     for (let record of records) {
         if (record.addedNodes.length) {
-            let element = document.getElementById(record.addedNodes[0].data)
+            let element = document.getElementById(record.addedNodes[0].data);
             if (element) {
-                parsingRowWords(element)
+                parsingRowWords(element);
             }
         }
     }
 }
 
 function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim()
+    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
 }
 
 function parsingAllTdInfo(productsListHtml) {
-    let inputProductNameText = removeBlackCharacters(document.querySelector('input.productModalQuery').value)
+    let inputProductNameText = removeBlackCharacters(document.querySelector('input.productModalQuery').value);
     for (let htmlElem of productsListHtml) {
-        let smallElem = htmlElem.querySelector('small')
-        let productNameText = removeBlackCharacters(smallElem.textContent)
-        insertCommonWordsInTdInfo(smallElem, getCommonWords(productNameText.split(" "), inputProductNameText, true))
+        let smallElem = htmlElem.querySelector('small');
+        let productNameText = removeBlackCharacters(smallElem.textContent);
+        insertCommonWordsInTdInfo(smallElem, getCommonWords(productNameText.split(" "), inputProductNameText, true));
     }
 }
 
 function getRowText(elem) {
-    let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText)
-    let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text)
+    let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText);
+    let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text);
     if (brandText.includes("\n")) {
-        brandText = brandText.split("\n")[1]
+        brandText = brandText.split("\n")[1];
     }
     return {
         brandText: brandText,
@@ -47,37 +47,37 @@ function getRowText(elem) {
 }
 
 function parsingRowWords(elem) {
-    let words = getRowText(elem)
-    let brandText = getCommonWords(words.brandText.split(" "), words.linkedText)
-    let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText)
-    insertRowTextInElement(elem, brandText, linkedText)
+    let words = getRowText(elem);
+    let brandText = getCommonWords(words.brandText.split(" "), words.linkedText);
+    let linkedText = getCommonWords(words.linkedText.split(" "), words.brandText);
+    insertRowTextInElement(elem, brandText, linkedText);
 }
 
 function insertRowTextInElement(elem, brandText, linkedText) {
-    let brandElem = elem.querySelector(".brandAndName")
-    brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText
+    let brandElem = elem.querySelector(".brandAndName");
+    brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText;
 
-    let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary")
-    linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText
+    let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary");
+    linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText;
 }
 
 function searchIncludesText(words, word) {
-    words = words.toLowerCase().split(" ")
-    word = word.toLowerCase()
+    words = words.toLowerCase().split(" ");
+    word = word.toLowerCase();
     return words.includes(word)
 }
 
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
-    htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords
+    htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords;
 }
 
 function getCommonWords(words1, words2, td) {
-    let commonWords = ""
+    let commonWords = "";
     for (let word of words1) {
         if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word, td)
+            commonWords += insertStyle(true, word, td);
         } else {
-            commonWords += insertStyle(false, word, td)
+            commonWords += insertStyle(false, word, td);
         }
     }
     return commonWords
@@ -91,19 +91,19 @@ function insertStyle(common, word, td) {
     }
 }
 
-let tableObserver = new MutationObserver(checkRows)
+let tableObserver = new MutationObserver(checkRows);
 tableObserver.observe(
     table,
     {
         childList: true,
         subtree: true
     }
-)
+);
 
-let modalObserver = new MutationObserver(checkModalResults)
+let modalObserver = new MutationObserver(checkModalResults);
 modalObserver.observe(
     productModalResults,
     {
         childList: true,
     }
-)
+);
