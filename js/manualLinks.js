@@ -21,8 +21,6 @@ function insertCommonWordsInTdInfo(htmlElem, commonWords) {
 }
 
 let modalObserver = new MutationObserver(checkModalResults);
-modalObserver.observe(
-    document.querySelector(".productModalResults"),
-    {
-        childList: true,
+modalObserver.observe(productModalResults, {
+    childList: true,
 });

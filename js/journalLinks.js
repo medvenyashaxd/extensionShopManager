@@ -1,12 +1,6 @@
 function checkLinks() {
-    parsingLinks(
-        document.querySelectorAll('td[aria-describedby="links_table_productName"]'),
-        document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]')
-    );
-    parsingLinks(
-        document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]'),
-        document.querySelectorAll('td[aria-describedby="links_table_productName"]'),
-    );
+    parsingLinks(document.querySelectorAll('td[aria-describedby="links_table_productName"]'), document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]'));
+    parsingLinks(document.querySelectorAll('td[aria-describedby="links_table_linkedProductName"]'), document.querySelectorAll('td[aria-describedby="links_table_productName"]'),);
 }
 
 function parsingLinks(links1, links2) {
@@ -28,9 +22,6 @@ checkLinks();
 
 
 let tableObserver = new MutationObserver(checkLinks);
-tableObserver.observe(
-    document.querySelector("tbody"),
-    {
-        childList: true,
-    }
-);
+tableObserver.observe(table, {
+    childList: true,
+});

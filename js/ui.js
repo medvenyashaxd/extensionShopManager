@@ -31,6 +31,8 @@ function runScript(script) {
 
 function clickedStartScriptButton(script, button) {
     button.innerText = "Включено";
-    setTimeout(() => {button.innerText = "Включить"}, 2000);
+    setTimeout(() => {
+        button.innerText = "Включить"
+    }, 2000);
     runScript(script);
 }

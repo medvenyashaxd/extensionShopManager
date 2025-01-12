@@ -38,7 +38,7 @@ function insertTextInElement(elem, brandText, linkedText) {
 
 let tableObserver = new MutationObserver(checkRows);
 tableObserver.observe(
-    document.querySelector("tbody"),
+    table,
     {
         childList: true,
         subtree: true

@@ -34,8 +34,7 @@ function getRowText(elem) {
         brandText = brandText.split("\n")[1];
     }
     return {
-        brandText: brandText,
-        linkedText: linkedText,
+        brandText: brandText, linkedText: linkedText,
     }
 }
 
@@ -59,18 +58,11 @@ function insertCommonWordsInTdInfo(htmlElem, commonWords) {
 }
 
 let tableObserver = new MutationObserver(checkRows);
-tableObserver.observe(
-    document.querySelector("tbody"),
-    {
-        childList: true,
-        subtree: true
-    }
-);
+tableObserver.observe(table, {
+    childList: true, subtree: true
+});
 
 let modalObserver = new MutationObserver(checkModalResults);
-modalObserver.observe(
-    document.querySelector(".productModalResults"),
-    {
-        childList: true,
-    }
-);
+modalObserver.observe(productModalResults, {
+    childList: true,
+});
