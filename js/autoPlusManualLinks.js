@@ -2,10 +2,8 @@ import searchIncludesText from './main'
 import removeBlackCharacters from './main'
 import insertStyle from './main'
 import getCommonWords from './main'
-
-
-let productModalResults = document.querySelector(".productModalResults");
-let table = document.querySelector("tbody");
+import productModalResults from './main'
+import table from './main'
 
 function checkModalResults(records) {
     for (let record of records) {

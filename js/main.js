@@ -1,3 +1,6 @@
+let productModalResults = document.querySelector(".productModalResults");
+let table = document.querySelector("tbody");
+
 function searchIncludesText(words, word) {
     words = words.toLowerCase().split(" ");
     word = word.toLowerCase();

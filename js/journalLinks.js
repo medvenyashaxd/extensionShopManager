@@ -1,9 +1,7 @@
 import searchIncludesText from './main'
 import insertStyle from './main'
 import getCommonWords from './main'
-
-
-let table = document.querySelector("tbody");
+import table from './main'
 
 function checkLinks() {
     parsingLinks(

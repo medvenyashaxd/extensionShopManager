@@ -2,9 +2,7 @@ import searchIncludesText from './main'
 import removeBlackCharacters from './main'
 import insertStyle from './main'
 import getCommonWords from './main'
-
-
-let table = document.querySelector("tbody");
+import table from './main'
 
 let checkRows = (records) => {
     for (let record of records) {
