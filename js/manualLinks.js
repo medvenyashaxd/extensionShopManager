@@ -1,5 +1,6 @@
 import searchIncludesText from './main'
 import removeBlackCharacters from './main'
+import insertStyle from './main'
 
 let productModalResults = document.querySelector(".productModalResults");
 let modalObserver = new MutationObserver(checkModalResults);
@@ -36,14 +37,6 @@ function getCommonWords(words1, words2, td) {
         }
     }
     return commonWords
-}
-
-function insertStyle(common, word, td) {
-    if (common) {
-        return `<span style="background-color: yellow; color: #222;${td ? 'font-weight: bold;' : ''}">${word}</span> `;
-    } else {
-        return `<span>${word}</span> `;
-    }
 }
 
 modalObserver.observe(

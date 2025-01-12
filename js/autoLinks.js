@@ -56,14 +56,6 @@ function getCommonWords(words1, words2) {
     return commonWords
 }
 
-function insertStyle(common, word) {
-    if (common) {
-        return `<span style="background-color: yellow; color: #222">${word}</span> `;
-    } else {
-        return `<span>${word}</span> `;
-    }
-}
-
 function insertTextInElement(elem, brandText, linkedText) {
     let brandElem = elem.querySelector(".brandAndName");
     brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText;

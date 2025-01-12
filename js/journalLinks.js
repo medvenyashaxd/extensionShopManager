@@ -33,14 +33,6 @@ function getCommonWords(words1, words2, td) {
     return commonWords
 }
 
-function insertStyle(common, word, td) {
-    if (common) {
-        return `<span style="background-color: yellow; color: #222;${td ? 'font-weight: bold;' : ''}">${word}</span> `;
-    } else {
-        return `<span>${word}</span> `;
-    }
-}
-
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     if (htmlElem.getElementsByTagName("a")[0]) {
         htmlElem.innerHTML = htmlElem.getElementsByTagName("a")[0].outerHTML + " " + commonWords;
