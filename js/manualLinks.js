@@ -1,46 +1,46 @@
-let productModalResults = document.querySelector(".productModalResults")
+let productModalResults = document.querySelector(".productModalResults");
 
-let modalObserver = new MutationObserver(checkModalResults)
+let modalObserver = new MutationObserver(checkModalResults);
 
 function checkModalResults(records) {
     for (let record of records) {
-        let nodes = record.addedNodes
+        let nodes = record.addedNodes;
         if (nodes.length) {
-            parsingAllTdInfo(nodes[0].querySelectorAll('td.issue-info'))
+            parsingAllTdInfo(nodes[0].querySelectorAll('td.issue-info'));
         }
     }
 }
 
 function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim()
+    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
 }
 
 function parsingAllTdInfo(productsListHtml) {
-    let inputProductNameText = removeBlackCharacters(document.querySelector('input.productModalQuery').value)
+    let inputProductNameText = removeBlackCharacters(document.querySelector('input.productModalQuery').value);
     for (let htmlElem of productsListHtml) {
-        let smallElem = htmlElem.querySelector('small')
-        let productNameText = removeBlackCharacters(smallElem.textContent)
-        insertCommonWordsInTdInfo(smallElem, getCommonWords(productNameText.split(" "), inputProductNameText, true))
+        let smallElem = htmlElem.querySelector('small');
+        let productNameText = removeBlackCharacters(smallElem.textContent);
+        insertCommonWordsInTdInfo(smallElem, getCommonWords(productNameText.split(" "), inputProductNameText, true));
     }
 }
 
 function searchIncludesText(words, word) {
-    words = words.toLowerCase().split(" ")
-    word = word.toLowerCase()
+    words = words.toLowerCase().split(" ");
+    word = word.toLowerCase();
     return words.includes(word)
 }
 
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
-    htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords
+    htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords;
 }
 
 function getCommonWords(words1, words2, td) {
-    let commonWords = ""
+    let commonWords = "";
     for (let word of words1) {
         if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word, td)
+            commonWords += insertStyle(true, word, td);
         } else {
-            commonWords += insertStyle(false, word, td)
+            commonWords += insertStyle(false, word, td);
         }
     }
     return commonWords
@@ -58,4 +58,4 @@ modalObserver.observe(
     productModalResults,
     {
         childList: true,
-    })
+    });
