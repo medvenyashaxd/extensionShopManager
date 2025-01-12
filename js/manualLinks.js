@@ -1,4 +1,5 @@
 import searchIncludesText from './main'
+import removeBlackCharacters from './main'
 
 let productModalResults = document.querySelector(".productModalResults");
 let modalObserver = new MutationObserver(checkModalResults);
