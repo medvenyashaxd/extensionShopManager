@@ -1,5 +1,6 @@
 import searchIncludesText from './main'
 import removeBlackCharacters from './main'
+import insertStyle from './main'
 
 
 let productModalResults = document.querySelector(".productModalResults");

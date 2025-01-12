@@ -1,4 +1,5 @@
 import searchIncludesText from './main'
+import insertStyle from './main'
 
 
 let table = document.querySelector("tbody");
