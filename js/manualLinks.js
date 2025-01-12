@@ -4,8 +4,6 @@ import insertStyle from './main'
 import getCommonWords from './main'
 import productModalResults from './main'
 
-let modalObserver = new MutationObserver(checkModalResults);
-
 function checkModalResults(records) {
     for (let record of records) {
         let nodes = record.addedNodes;
@@ -28,6 +26,7 @@ function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords;
 }
 
+let modalObserver = new MutationObserver(checkModalResults);
 modalObserver.observe(
     productModalResults,
     {
