@@ -15,15 +15,6 @@ let checkRows = (records) => {
     }
 }
 
-let observer = new MutationObserver(checkRows);
-observer.observe(
-    table,
-    {
-        childList: true,
-        subtree: true
-    }
-);
-
 function getText(elem) {
     let brandText = removeBlackCharacters(elem.querySelector(".brandAndName").innerText);
     let linkedText = removeBlackCharacters(elem.querySelector(".btn.btn-xs.btn-outline.btn-primary").text);
@@ -50,3 +41,12 @@ function insertTextInElement(elem, brandText, linkedText) {
     let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary");
     linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText;
 }
+
+let tableObserver = new MutationObserver(checkRows);
+tableObserver.observe(
+    table,
+    {
+        childList: true,
+        subtree: true
+    }
+);
