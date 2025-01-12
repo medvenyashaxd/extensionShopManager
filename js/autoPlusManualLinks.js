@@ -1,6 +1,3 @@
-let productModalResults = document.querySelector(".productModalResults");
-let table = document.querySelector("tbody");
-
 function checkModalResults(records) {
     for (let record of records) {
         let nodes = record.addedNodes;
@@ -21,10 +18,6 @@ let checkRows = (records) => {
     }
 }
 
-function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
-}
-
 function parsingAllTdInfo(productsListHtml) {
     let inputProductNameText = removeBlackCharacters(document.querySelector('input.productModalQuery').value);
     for (let htmlElem of productsListHtml) {
@@ -41,8 +34,7 @@ function getRowText(elem) {
         brandText = brandText.split("\n")[1];
     }
     return {
-        brandText: brandText,
-        linkedText: linkedText,
+        brandText: brandText, linkedText: linkedText,
     }
 }
 
@@ -61,49 +53,16 @@ function insertRowTextInElement(elem, brandText, linkedText) {
     linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText;
 }
 
-function searchIncludesText(words, word) {
-    words = words.toLowerCase().split(" ");
-    word = word.toLowerCase();
-    return words.includes(word)
-}
-
 function insertCommonWordsInTdInfo(htmlElem, commonWords) {
     htmlElem.getElementsByTagName("a")[0].innerHTML = commonWords;
 }
 
-function getCommonWords(words1, words2, td) {
-    let commonWords = "";
-    for (let word of words1) {
-        if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word, td);
-        } else {
-            commonWords += insertStyle(false, word, td);
-        }
-    }
-    return commonWords
-}
-
-function insertStyle(common, word, td) {
-    if (common) {
-        return `<span style="background-color: yellow; color: #222;${td ? 'font-weight: bold;' : ''}">${word}</span> `;
-    } else {
-        return `<span>${word}</span> `;
-    }
-}
-
 let tableObserver = new MutationObserver(checkRows);
-tableObserver.observe(
-    table,
-    {
-        childList: true,
-        subtree: true
-    }
-);
+tableObserver.observe(table, {
+    childList: true, subtree: true
+});
 
 let modalObserver = new MutationObserver(checkModalResults);
-modalObserver.observe(
-    productModalResults,
-    {
-        childList: true,
-    }
-);
+modalObserver.observe(productModalResults, {
+    childList: true,
+});

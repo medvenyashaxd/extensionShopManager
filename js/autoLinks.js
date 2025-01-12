@@ -1,5 +1,3 @@
-let table = document.querySelector("tbody");
-
 let checkRows = (records) => {
     for (let record of records) {
         if (record.addedNodes.length) {
@@ -9,19 +7,6 @@ let checkRows = (records) => {
             }
         }
     }
-}
-
-let observer = new MutationObserver(checkRows);
-observer.observe(
-    table,
-    {
-        childList: true,
-        subtree: true
-    }
-);
-
-function removeBlackCharacters(str) {
-    return str.replace(/"/g, "").replace(/,/g, "").replace(/;/g, "").replace(/\[/g, "").replace(/]/g, "").replace(/\(/g, "").replace(/\)/g, "").trim();
 }
 
 function getText(elem) {
@@ -43,32 +28,6 @@ function parsingWords(elem) {
     insertTextInElement(elem, brandText, linkedText);
 }
 
-function searchIncludesText(words, word){
-    words = words.toLowerCase().split(" ");
-    word = word.toLowerCase();
-    return words.includes(word)
-}
-
-function getCommonWords(words1, words2) {
-    let commonWords = "";
-    for (let word of words1) {
-        if (searchIncludesText(words2, word)) {
-            commonWords += insertStyle(true, word);
-        } else {
-            commonWords += insertStyle(false, word);
-        }
-    }
-    return commonWords
-}
-
-function insertStyle(common, word) {
-    if (common) {
-        return `<span style="background-color: yellow; color: #222">${word}</span> `;
-    } else {
-        return `<span>${word}</span> `;
-    }
-}
-
 function insertTextInElement(elem, brandText, linkedText) {
     let brandElem = elem.querySelector(".brandAndName");
     brandElem.querySelector("small") ? brandElem.innerHTML = `<small>${brandElem.querySelector("small").outerText}</small><br>${brandText}` : brandElem.innerHTML = brandText;
@@ -76,3 +35,12 @@ function insertTextInElement(elem, brandText, linkedText) {
     let linkedElem = elem.querySelector(".btn.btn-xs.btn-outline.btn-primary");
     linkedElem.innerHTML = '<i class="fa fa-external-link"></i> ' + linkedText;
 }
+
+let tableObserver = new MutationObserver(checkRows);
+tableObserver.observe(
+    table,
+    {
+        childList: true,
+        subtree: true
+    }
+);

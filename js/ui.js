@@ -23,7 +23,7 @@ function runScript(script) {
         chrome.scripting.executeScript(
             {
                 target: {tabId: tabs[0].id},
-                files: ["./js/" + script + ".js"]
+                files: ["./js/main.js", "./js/" + script + ".js"]
             },
         );
     });
@@ -31,6 +31,8 @@ function runScript(script) {
 
 function clickedStartScriptButton(script, button) {
     button.innerText = "Включено";
-    setTimeout(() => {button.innerText = "Включить"}, 2000);
+    setTimeout(() => {
+        button.innerText = "Включить"
+    }, 2000);
     runScript(script);
 }
