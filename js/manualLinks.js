@@ -1,6 +1,7 @@
 import searchIncludesText from './main'
 import removeBlackCharacters from './main'
 import insertStyle from './main'
+import getCommonWords from './main'
 
 let productModalResults = document.querySelector(".productModalResults");
 let modalObserver = new MutationObserver(checkModalResults);
