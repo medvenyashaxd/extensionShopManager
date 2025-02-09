@@ -20,12 +20,15 @@ checkJournalLinksButton.onclick = () => {
 
 function runScript(script) {
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-        chrome.scripting.executeScript(
-            {
-                target: {tabId: tabs[0].id},
-                files: ["./js/main.js", "./js/" + script + ".js"]
-            },
-        );
+        const tab = tabs[0];
+        if (tab) {
+            chrome.scripting.executeScript(
+                {
+                    target: {tabId: tab.id},
+                    files: ["./js/common.js", "./js/" + script + ".js"]
+                }
+            );
+        }
     });
 }
 
